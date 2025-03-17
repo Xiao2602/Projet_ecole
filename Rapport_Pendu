@@ -1,0 +1,66 @@
+- Introduction
+Le pendu/hangman est un jeu où nous devons deviner le mot que l’ordinateur a choisi. 
+Ce programme permet de simuler ce process en utilisant ces fonctions :
+------------------
+- Fonction mot_random()
+La fonction permet de choisir un mot aléatoire à l’ouverture du fichier test.txt (⚠ le fichier doit être dans le même endroit que le code !) dans une variable file.
+A la suite de cela, une boucle est créée pour vérifier que le numLigne est inférieur à i et que fileScanner.Scan() soit inférieur à numLigne (ayant comme variante le nombre de ligne du fichier texte et un choix aléatoire du mot)
+------------------
+- Fonction affichage_jeu()
+La fonction permet de débuter le jeu avec un message de bienvenue. 
+A la suite de cela, elle fait appel à la fonction mot_random() afin de donner à la variable mot un mot à deviner pour le jeu.
+Une boucle est créée pour parcourir la taille du mot afin de créer mot_caché en underscore selon la taille du mot.
+Enfin, elle appelle word(mot, mot_caché) afin de donner à cette fonction les variables prédéfinies à la suite du déroulement de celle-ci.
+------------------
+- Fonction word(mot, mot_caché string)
+La fonction prend en paramètre le mot et le mot caché, ce qui permet de déterminer si une lettre est présente dans le mot_caché ou si le mot tapé correspond à celui que l’on doit deviner (⚠ le mot doit être deviner avant que le nombre_essai n’arrive à 0 !)
+
+Tant que nombre_essai > 0, on demande à l’utilisateur de taper soit un mot soit une lettre. A la suite de cela, le programme vérifie si la lettre_tapée est dans le mot_caché ou non, affichant un message positif (si la lettre est bonne) ou l’opposé (si le caractère est mauvais : dessin hangman), mettant ainsi à jour le mot_caché au fur et à mesure des tentatives.
+
+Evidemment, l’utilisateur peut se permettre de taper le mot mais il doit faire attention à 2 choses : le respect du nombre de lettres mais aussi l’écriture du mot caché.
+(⚠ Les lettres déjà tapées seront mentionnées et le nombre_essai ne diminuera guère)
+
+A la suite de cela, cette fonction fait appel à 5 fonctions (explication dans les fonctions concernées) :
+    -	Nombre_essais (nombre_essai int) int
+    -	Vérifier_lettre_tapée (lettres_deja_tapees, lettre string) bool
+    -	Vérifier_lettres(lettre,mot string) bool
+    -	Nouv_mot_caché (lettre, mot, mot_caché string) string
+    -	Hangman_dessin(nombre_essai int)
+    -	Rejouer()
+    
+Elle retourne des valeurs numériques, textuelles et booléennes. 
+Si le mot est deviné, un message de victoire s’affiche sinon ce sera celui d’une défaite.
+------------------
+- Fonction vérification_lettre_tapée(lettre_deja_tapees, lettre string) bool
+La fonction prend en paramètre les lettres déjà tapées et la lettre que l’on choisit d’insérer, cela permet de vérifier qu’une lettre est déjà tapé ou non. 
+Elle fonctionne avec une boucle qui retourne true si lettre n’a pas déjà été inséré sinon elle retourne false (lettres_deja_tapees).
+------------------
+- Fonction vérifier_lettres(lettres_mot string) bool
+La fonction prend en paramètre les lettres du mot et permet de vérifier qu’une lettre est existante dans celui-ci ou non. 
+Elle fonctionne avec une boucle qui retourne true si lettre est dans l’indice de mot (string(mot[i])), sinon elle retourne false.
+------------------
+- Fonction nouv_mot_caché(lettres, mot, mot_caché string) string
+La fonction prend en paramètre les lettres probablement dans le mot caché, le mot et le mot à deviner, cela permet de mettre à jour le mot caché (maj_mot_caché) initialisé à vide tout comme index est égal à 0.
+A la suite de cela, une boucle est créée pour vérifier que len(mot) < i.
+Si l’indice de mot correspond à lettres, le mot caché aura donc la lettre en ajout et sera retrouné sinon mot caché ne changera pas.
+------------------
+- Fonction hangman_dessin(nombre_essai int)
+La fonction prend en paramètre le nombre d’essai et permet d’ouvrir le fichier hangman.txt (⚠ le fichier doit être dans le même endroit que le code !) dans une variable file.
+
+A la suite de cela, on déclare une variable étapes pour prendre les lignes du fichier afin de les stocker dans un tableau. Tant que le fichier est lu, étapes ajoute les données au fur et à mesure de sa lecture.
+
+Une fois cela fait, on déclare lignesParEtape pour faire correspondre aux valeurs du contenu de « José » afin de créer ensuite totalEtape qui affiche le nombre d’étape que le fichier contient.
+
+EtapeActuelle est déclarée pour savoir quel schéma sera dessiner selon ce qui se passe dans le jeu, debut signifie le premier bout du schéma alors que fin dessine la fin de celui-ci (ex : le premier schéma affichera ========= car les premières lignes sont vides, …).
+------------------
+- Fonction nombre_essais(essais_restants int) int
+La fonction prend en paramètre les essais restants et calcule le nombre d’essai de la partie (essais_restants) qui se soustrait à chaque fois quand il y a une mauvaise réponse durant le jeu avant de le retourner.
+------------------
+- Fonction rejouer()
+La fonction permet de demander au joueur s’il veut rejouer ou non, affichant un message selon le choix fait. 
+A la suite de cela, elle fait appel à la fonction affichage_jeu() si le jeu redémarre.
+
+Une boucle est créée pour que l’utilisateur tape une bonne réponse.
+------------------
+- Fonction main()
+La fonction affiche tout simplement la fonction affichage_jeu() en l’appelant.
