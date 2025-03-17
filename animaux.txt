@@ -1,0 +1,12 @@
+vache
+veau
+chevre
+brebis
+ane
+cheval
+taureau
+agneau
+poney
+jument
+dindon
+ours

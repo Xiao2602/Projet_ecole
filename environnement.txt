@@ -1,0 +1,11 @@
+soleil
+lune
+foret
+tropique
+chaleur
+fraicheur
+brume
+nuage
+orage
+tempete
+tsunami

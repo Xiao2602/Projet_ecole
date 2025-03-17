@@ -1,0 +1,9 @@
+arabe
+français
+allemand
+italien
+espagnol
+japonais
+anglais
+chinois
+tagalog
